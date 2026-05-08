@@ -38,4 +38,20 @@ public class Enemigo : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void ActualizarTexto(string input)
+    {
+        string resaltado =
+            "<color=green>" +
+            input +
+            "</color>" +
+            palabra.Substring(input.Length);
+
+        texto.text = resaltado;
+    }
+
+    public void ResetTexto()
+    {
+        texto.text = palabra;
+    }
 }

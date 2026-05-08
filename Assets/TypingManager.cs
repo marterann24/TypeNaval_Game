@@ -55,6 +55,7 @@ public class TypingManager : MonoBehaviour
                 if (enemigoActual.palabra.StartsWith(nuevoInput))
                 {
                     input = nuevoInput;
+                    enemigoActual.ActualizarTexto(input);
                     Debug.Log("Input: " + input);
                     if (enemigoActual.palabra == input)
                     {
@@ -68,6 +69,7 @@ public class TypingManager : MonoBehaviour
                     Debug.Log("Error");
 
                     enemigoActual.SetActivo(false);
+                    enemigoActual.ResetTexto();
                     enemigoActual = null;
                     input = "";
                 }
