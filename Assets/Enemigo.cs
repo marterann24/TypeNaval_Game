@@ -9,14 +9,26 @@ public class Enemigo : MonoBehaviour
     public float velocidad = 1f;
 
     private SpriteRenderer sr;
+    private Animator anim;
+    public bool muriendo = false;
+
+    static readonly int isMoving = Animator.StringToHash("isMoving");
+    static readonly int isDead = Animator.StringToHash("isDead");
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        anim.SetBool(isMoving, true);
     }
 
     void Update()
     {
+        if(muriendo) return;
         transform.Translate(Vector2.left * velocidad * Time.deltaTime);
     }
 
@@ -35,6 +47,14 @@ public class Enemigo : MonoBehaviour
     }
 
     public void Destruir()
+    {
+        muriendo = true;
+        sr.color = Color.white;
+        anim.SetBool(isMoving, false);
+        anim.SetBool(isDead, true);
+    }
+
+    public void OnDestroyComplete()
     {
         Destroy(gameObject);
     }
