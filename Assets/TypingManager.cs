@@ -41,7 +41,7 @@ public class TypingManager : MonoBehaviour
 
                 foreach (Enemigo enemigo in enemigos)
                 {
-                    if (enemigo.palabra.StartsWith(nuevoInput))
+                    if (enemigo.palabra.StartsWith(nuevoInput) && !enemigo.muriendo)
                     {
                         enemigoActual = enemigo;
                         enemigoActual.SetActivo(true);
