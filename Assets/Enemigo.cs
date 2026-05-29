@@ -9,15 +9,22 @@ public class Enemigo : MonoBehaviour
 
     [Header("Movimiento")]
     public float velocidad = 2f;
+    public Vector2 direccionAvance = Vector2.left;
     public float amplitud = 0.15f;
     public float frecuencia = 2f;
+    public float amplitudVaivenVertical = 0.06f;
+    public float rotacionMaxima = 3f;
 
     [Header("Recompensas")]
     public int coinsAlMorir = 5;
 
     private SpriteRenderer sr;
     private Animator anim;
-    private Vector3 posicionInicial;
+    private Rigidbody2D rb;
+    private Collider2D col;
+    private Vector3 posicionBase;
+    private float faseMovimiento;
+    private float rotacionInicialZ;
 
     public bool muriendo = false;
 
@@ -28,11 +35,24 @@ public class Enemigo : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     void Start()
     {
-        posicionInicial = transform.position;
+        posicionBase = transform.position;
+        faseMovimiento = Random.Range(0f, Mathf.PI * 2f);
+        rotacionInicialZ = transform.eulerAngles.z;
+
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.gravityScale = 0f;
+        }
+
+        if (col != null)
+            col.isTrigger = true;
 
         if (anim != null)
             anim.SetBool(isMoving, true);
@@ -41,16 +61,24 @@ public class Enemigo : MonoBehaviour
     void Update()
     {
         if (muriendo) return;
+        if (GameManager.instancia != null && GameManager.instancia.JuegoTerminado) return;
 
-        transform.position += Vector3.left * velocidad * Time.deltaTime;
+        Vector3 direccion = new Vector3(direccionAvance.x, direccionAvance.y, 0f);
 
-        float movimientoY = Mathf.Sin(Time.time * frecuencia) * amplitud;
+        if (direccion.sqrMagnitude <= 0.0001f)
+            direccion = Vector3.left;
 
-        transform.position = new Vector3(
-            transform.position.x,
-            posicionInicial.y + movimientoY,
-            transform.position.z
-        );
+        direccion.Normalize();
+        posicionBase += direccion * velocidad * Time.deltaTime;
+
+        Vector3 lateral = new Vector3(-direccion.y, direccion.x, 0f);
+        float tiempo = Time.time * frecuencia + faseMovimiento;
+        float movimientoLateral = Mathf.Sin(tiempo) * amplitud;
+        float vaivenVertical = Mathf.Sin(tiempo * 1.35f) * amplitudVaivenVertical;
+        float rotacion = Mathf.Sin(tiempo * 0.9f) * rotacionMaxima;
+
+        transform.position = posicionBase + lateral * movimientoLateral + Vector3.up * vaivenVertical;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotacionInicialZ + rotacion);
     }
 
     public void SetPalabra(string nuevaPalabra)
@@ -77,10 +105,17 @@ public class Enemigo : MonoBehaviour
         if (sr != null)
             sr.color = Color.white;
 
+        if (col != null)
+            col.enabled = false;
+
         if (anim != null)
         {
             anim.SetBool(isMoving, false);
             anim.SetBool(isDead, true);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
 
         if (GameManager.instancia != null)

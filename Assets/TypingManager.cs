@@ -21,6 +21,9 @@ public class TypingManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instancia != null && GameManager.instancia.JuegoTerminado)
+            return;
+
         timer += Time.deltaTime;
 
         if (timer >= tiempoSpawn)
@@ -52,6 +55,13 @@ public class TypingManager : MonoBehaviour
             
             if (enemigoActual != null)
             {
+                if (enemigoActual.muriendo)
+                {
+                    enemigoActual = null;
+                    input = "";
+                    continue;
+                }
+
                 if (enemigoActual.palabra.StartsWith(nuevoInput))
                 {
                     input = nuevoInput;
@@ -83,11 +93,15 @@ public class TypingManager : MonoBehaviour
     }
     void SpawnEnemy()
     {
+        if (enemyPrefab == null) return;
+
         float y = Random.Range(minY, maxY);
 
         GameObject enemigoObj = Instantiate(enemyPrefab, new Vector2(spawnX, y), Quaternion.identity);
 
         Enemigo enemigo = enemigoObj.GetComponent<Enemigo>();
+
+        if (enemigo == null) return;
 
         string palabraRandom = palabras[Random.Range(0, palabras.Length)];
 
