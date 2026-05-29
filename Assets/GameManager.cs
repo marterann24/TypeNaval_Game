@@ -28,7 +28,10 @@ public class GameManager : MonoBehaviour
             panelGameOver = CrearPanelGameOver();
 
         if (panelGameOver != null)
+        {
+            ConfigurarBotonesGameOver(panelGameOver);
             panelGameOver.SetActive(false);
+        }
 
         ActualizarTextoCoins();
     }
@@ -65,6 +68,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void IrAlMenu()
+    {
+        IrMenu();
     }
 
     private void ActualizarTextoCoins()
@@ -120,6 +128,74 @@ public class GameManager : MonoBehaviour
         texto.alignment = TextAlignmentOptions.Center;
         texto.color = Color.white;
 
+        CrearBotonGameOver(panel.transform, "BtnReintentar", "Reintentar", new Vector2(-115f, -95f), Reintentar);
+        CrearBotonGameOver(panel.transform, "BtnMenu", "Menu", new Vector2(115f, -95f), IrMenu);
+
         return panel;
+    }
+
+    private void ConfigurarBotonesGameOver(GameObject panel)
+    {
+        Button[] botones = panel.GetComponentsInChildren<Button>(true);
+        bool tieneReintentar = false;
+        bool tieneMenu = false;
+
+        foreach (Button boton in botones)
+        {
+            if (boton.name.Contains("Reintentar"))
+            {
+                boton.onClick.RemoveListener(Reintentar);
+                boton.onClick.AddListener(Reintentar);
+                tieneReintentar = true;
+            }
+
+            if (boton.name.Contains("Menu") || boton.name.Contains("Menú"))
+            {
+                boton.onClick.RemoveListener(IrMenu);
+                boton.onClick.AddListener(IrMenu);
+                tieneMenu = true;
+            }
+        }
+
+        if (!tieneReintentar)
+            CrearBotonGameOver(panel.transform, "BtnReintentar", "Reintentar", new Vector2(-115f, -95f), Reintentar);
+
+        if (!tieneMenu)
+            CrearBotonGameOver(panel.transform, "BtnMenu", "Menu", new Vector2(115f, -95f), IrMenu);
+    }
+
+    private Button CrearBotonGameOver(Transform parent, string nombre, string etiqueta, Vector2 posicion, UnityEngine.Events.UnityAction accion)
+    {
+        GameObject botonObj = new GameObject(nombre, typeof(RectTransform), typeof(Image), typeof(Button));
+        botonObj.transform.SetParent(parent, false);
+
+        RectTransform rect = botonObj.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(190f, 52f);
+        rect.anchoredPosition = posicion;
+
+        Image imagen = botonObj.GetComponent<Image>();
+        imagen.color = new Color(1f, 1f, 1f, 0.92f);
+
+        Button boton = botonObj.GetComponent<Button>();
+        boton.onClick.AddListener(accion);
+
+        GameObject textoObj = new GameObject("Texto", typeof(RectTransform), typeof(TextMeshProUGUI));
+        textoObj.transform.SetParent(botonObj.transform, false);
+
+        RectTransform textoRect = textoObj.GetComponent<RectTransform>();
+        textoRect.anchorMin = Vector2.zero;
+        textoRect.anchorMax = Vector2.one;
+        textoRect.offsetMin = Vector2.zero;
+        textoRect.offsetMax = Vector2.zero;
+
+        TextMeshProUGUI texto = textoObj.GetComponent<TextMeshProUGUI>();
+        texto.text = etiqueta;
+        texto.fontSize = 24f;
+        texto.alignment = TextAlignmentOptions.Center;
+        texto.color = Color.black;
+
+        return boton;
     }
 }
