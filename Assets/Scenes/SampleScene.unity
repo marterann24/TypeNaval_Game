@@ -900,16 +900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TypingManager
   enemyPrefab: {fileID: 8028149319172768696, guid: 188c4711041945b43b9baa52104cb7c1, type: 3}
-  palabras:
-  - barco
-  - mar
-  - ola
-  - viento
-  - nave
   spawnX: 4
   minY: -2
   maxY: 2
-  tiempoSpawn: 2
 --- !u!4 &1759813244
 Transform:
   m_ObjectHideFlags: 0
@@ -1074,6 +1067,7 @@ GameObject:
   - component: {fileID: 2034700664}
   - component: {fileID: 2034700666}
   - component: {fileID: 2034700667}
+  - component: {fileID: 2034700668}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1192,6 +1186,20 @@ MonoBehaviour:
   coins: 0
   textoCoins: {fileID: 0}
   panelGameOver: {fileID: 0}
+  panelVictoria: {fileID: 0}
+--- !u!114 &2034700668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034700663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965a7e8eea919724690c091afe3b1297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
+  fondosPorNivel: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
