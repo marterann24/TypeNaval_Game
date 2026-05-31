@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 4576941125676513324, guid: fcb472122eab5a74aa819d2f0ac3ecad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hola
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fcb472122eab5a74aa819d2f0ac3ecad, type: 2}
+  m_sharedMaterial: {fileID: 4576941125676513324, guid: fcb472122eab5a74aa819d2f0ac3ecad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.671083, y: 0.13179708, z: 14.109878, w: 3.6394517}
+  m_margin: {x: -11.620584, y: -0.67679095, z: 0.9902954, w: 3.6394517}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -292,8 +292,11 @@ MonoBehaviour:
   palabra: 
   texto: {fileID: 7281644400416786203}
   velocidad: 2
+  direccionAvance: {x: -1, y: 0}
   amplitud: 0.15
   frecuencia: 2
+  amplitudVaivenVertical: 0.06
+  rotacionMaxima: 3
   coinsAlMorir: 5
   muriendo: 0
 --- !u!95 &1219898968304613786
