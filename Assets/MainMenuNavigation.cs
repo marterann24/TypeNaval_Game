@@ -6,6 +6,7 @@ public class MainMenuNavigation : MonoBehaviour
 {
     private const string MenuSceneName = "MainMenu";
     private const string GameSceneName = "SampleScene";
+    private const string LevelSelectSceneName = "LevelSelect";
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Inicializar()
@@ -46,6 +47,12 @@ public class MainMenuNavigation : MonoBehaviour
                 boton.onClick.RemoveListener(Salir);
                 boton.onClick.AddListener(Salir);
             }
+
+            if (boton.name == "BtnNiveles")
+            {
+                boton.onClick.RemoveListener(AbrirNiveles);
+                boton.onClick.AddListener(AbrirNiveles);
+            }
         }
     }
 
@@ -58,5 +65,11 @@ public class MainMenuNavigation : MonoBehaviour
     private static void Salir()
     {
         Application.Quit();
+    }
+
+    private static void AbrirNiveles()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(LevelSelectSceneName);
     }
 }
