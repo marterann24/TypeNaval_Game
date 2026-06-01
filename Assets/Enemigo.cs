@@ -88,7 +88,7 @@ public class Enemigo : MonoBehaviour
         if (texto != null)
             texto.text = palabra;
     }
-
+    
     public void SetActivo(bool activo)
     {
         if (sr == null) return;
