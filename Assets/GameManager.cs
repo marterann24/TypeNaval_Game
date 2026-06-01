@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public GameObject panelGameOver;
     public GameObject panelVictoria;
 
+    public AudioClip sonidoDestruccion;
+    private AudioSource audioSource;
+
     private bool juegoTerminado = false;
     private bool nivelCompleto = false;
     public bool JuegoTerminado => juegoTerminado || nivelCompleto;
@@ -43,6 +46,12 @@ public class GameManager : MonoBehaviour
             panelVictoria.SetActive(false);
 
         ActualizarTextoCoins();
+        audioSource = GetComponent<AudioSource>();
+
+if (audioSource == null)
+{
+    audioSource = gameObject.AddComponent<AudioSource>();
+}
     }
 
     public void AgregarCoins(int cantidad)
@@ -59,7 +68,18 @@ public class GameManager : MonoBehaviour
 
         juegoTerminado = true;
 
-        Debug.Log("GAME OVER");
+Debug.Log("GAME OVER en objeto: " + gameObject.name);
+
+        Debug.Log("Intentando reproducir sonido");
+
+if (sonidoDestruccion != null)
+{
+    audioSource.PlayOneShot(sonidoDestruccion);
+}
+else
+        {
+            Debug.Log("No hay sonido asignado en objeto: " + gameObject.name);
+        }
 
         if (panelGameOver != null)
             panelGameOver.SetActive(true);
