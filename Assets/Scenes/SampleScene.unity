@@ -1199,7 +1199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965a7e8eea919724690c091afe3b1297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
-  fondosPorNivel: []
+  fondosPorNivel:
+  - {fileID: 9100000, guid: 0c72e92b3f11999468a474353b172e40, type: 2}
+  - {fileID: 9100000, guid: 0389b0ddc8acfb04f909713342ce867a, type: 2}
+  - {fileID: 9100000, guid: 045a1c41e5805424b928601f62871a83, type: 2}
+  - {fileID: 9100000, guid: 7061edc6c1ecd054fa837169004b5217, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
