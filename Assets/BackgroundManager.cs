@@ -11,9 +11,14 @@ public class BackgroundManager : MonoBehaviour
         
         int nivel = TypingManager.nivelActual;
         
-        if (fondosPorNivel != null && nivel < fondosPorNivel.Length)
+        if (anim == null || fondosPorNivel == null || nivel < 0 || nivel >= fondosPorNivel.Length)
+            return;
+
+        RuntimeAnimatorController fondo = fondosPorNivel[nivel];
+
+        if (fondo != null && fondo.animationClips.Length > 0)
         {
-            anim.runtimeAnimatorController = fondosPorNivel[nivel];
+            anim.runtimeAnimatorController = fondo;
         }
     }
 }
