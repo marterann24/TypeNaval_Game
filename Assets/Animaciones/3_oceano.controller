@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ocean_4_anim
+  m_Name: 3_oceano
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers: []

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    public RuntimeAnimatorController[] fondosPorNivel;  // 4 animator controllers
+    public RuntimeAnimatorController[] fondosPorNivel;  // 4 animaciones
     private Animator anim;
 
     void Start()
@@ -11,14 +11,9 @@ public class BackgroundManager : MonoBehaviour
         
         int nivel = TypingManager.nivelActual;
         
-        if (anim == null || fondosPorNivel == null || nivel < 0 || nivel >= fondosPorNivel.Length)
-            return;
-
-        RuntimeAnimatorController fondo = fondosPorNivel[nivel];
-
-        if (fondo != null && fondo.animationClips.Length > 0)
+        if (nivel < fondosPorNivel.Length)
         {
-            anim.runtimeAnimatorController = fondo;
+            anim.runtimeAnimatorController = fondosPorNivel[nivel];
         }
     }
 }
