@@ -108,6 +108,9 @@ public class Enemigo : MonoBehaviour
         if (col != null)
             col.enabled = false;
 
+        if (GameManager.instancia != null)
+            GameManager.instancia.ReproducirSonidoDestruccion();
+
         if (anim != null)
         {
             anim.SetBool(isMoving, false);
