@@ -1050,8 +1050,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2034700665}
   - component: {fileID: 2034700664}
-  - component: {fileID: 2034700666}
-  - component: {fileID: 2034700667}
   - component: {fileID: 2034700668}
   m_Layer: 0
   m_Name: Background
@@ -1109,8 +1107,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7043376409670164201, guid: 3b5952f773a996b46b96b1e7cdbc1892, type: 3}
-  m_Color: {r: 0.41997153, g: 0.74884826, b: 0.94716984, a: 1}
+  m_Sprite: {fileID: -8529074516462454229, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -1134,44 +1132,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2034700666
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034700663}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 30ebe343a1efe1f4491abb5d3575539f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2034700667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034700663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bf2082703bc051488a16252131be821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  textoCoins: {fileID: 0}
-  panelGameOver: {fileID: 0}
-  panelVictoria: {fileID: 0}
-  sonidoDestruccion: {fileID: 8300000, guid: c809fb8d7fc20482b8b72d13bf5415fb, type: 3}
 --- !u!114 &2034700668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,11 +1144,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965a7e8eea919724690c091afe3b1297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
-  fondosPorNivel:
-  - {fileID: 9100000, guid: 0c72e92b3f11999468a474353b172e40, type: 2}
-  - {fileID: 9100000, guid: 0389b0ddc8acfb04f909713342ce867a, type: 2}
-  - {fileID: 9100000, guid: 045a1c41e5805424b928601f62871a83, type: 2}
-  - {fileID: 9100000, guid: 7061edc6c1ecd054fa837169004b5217, type: 2}
+  nivel1Frames:
+  - {fileID: -8529074516462454229, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  - {fileID: -1182533962, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  - {fileID: -522106048, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  - {fileID: -284012776, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  - {fileID: -1122719038, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  - {fileID: 98665452, guid: 2e3f9bf5a578b274cbd07dbb5e39be5d, type: 3}
+  nivel2Frames:
+  - {fileID: 8720097244470250776, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  - {fileID: -2026460159, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  - {fileID: -1671537393, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  - {fileID: 315091742, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  - {fileID: 185960909, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  - {fileID: 1634888886, guid: 5a32dc8cd2b10cd49be78a19c4fa1297, type: 3}
+  nivel3Frames:
+  - {fileID: 6002721859957164730, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  - {fileID: 900997036, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  - {fileID: -376588711, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  - {fileID: -637236197, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  - {fileID: -1545389681, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  - {fileID: 1043294446, guid: f29802ad068c4a044a52a00c5a8a04e8, type: 3}
+  nivel4Frames:
+  - {fileID: 4877503678648269296, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  - {fileID: -1973363488, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  - {fileID: -1852993141, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  - {fileID: 1311230129, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  - {fileID: -61338625, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  - {fileID: 163482360, guid: 822e335c39cdf6146bc636f5d1d11acd, type: 3}
+  framesPorSegundo: 6
 --- !u!1 &2100000001
 GameObject:
   m_ObjectHideFlags: 0

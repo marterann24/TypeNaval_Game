@@ -62,6 +62,12 @@ if (audioSource == null)
         ActualizarTextoCoins();
     }
 
+    public void ReproducirSonidoDestruccion()
+    {
+        if (sonidoDestruccion != null && audioSource != null)
+            audioSource.PlayOneShot(sonidoDestruccion);
+    }
+
     public void Perder()
     {
         if (juegoTerminado) return;
